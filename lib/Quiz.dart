@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'NetworkQuiz.dart';
 import 'Summary.dart';
 
 class QuizDB {
@@ -57,6 +55,7 @@ class QuizDB {
       "Sorting data on a hard drive"
     ],
     ["HTML", "NetBEUI", "TCP/IP", "IPX/SPX"],
+    ["Ring", "Local area", "Hierarchical", "Star"]
   ];
 
   var ans = [
@@ -67,9 +66,11 @@ class QuizDB {
     "World Wide Web (WWW)",
     "URL",
     "with external access",
+    " Full access rights for all users",
     "Firewall",
     "Sending information to a host computer",
     "TCP/IP",
+    "Star"
   ];
 }
 
@@ -88,135 +89,146 @@ class _QuizState extends State<Quiz> {
   final qColor = const Color.fromRGBO(189, 238, 183, 1);
   final aColor = const Color.fromRGBO(238, 183, 211, 1);
 
-  void updateQuestion() {
-    setState(() {
-      if (quesNumber == quiz.questions.length ) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SSummary(score: finalScore,)));
-      } else {
-        quesNumber++;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          backgroundColor: aColor,
+            backgroundColor: aColor,
             body: Container(
               margin: EdgeInsets.all(20),
-          alignment: Alignment.topCenter,
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(20),
-              ),
-              Container(
-                alignment: Alignment.centerRight,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                        'Question ${quesNumber + 1} of ${quiz.questions.length}'),
-                    Text('Score $finalScore'),
-                  ],
-                ),
-              ),
-              const Padding(padding: EdgeInsets.all(10)),
-              SizedBox(height: 15,),
-              Text("->-> ${quiz.questions[quesNumber]}",
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-              ),
-              SizedBox(height: 15,),
-              Wrap(
-                children:[
-                    MaterialButton(
-                      minWidth: 100,
-                      color: qColor,
-                      child: Text(quiz.choices[quesNumber][0]),
-                      onPressed: () {
-                        if(quiz.choices[quesNumber][0] == quiz.ans[quesNumber]){
-                          debugPrint('CORRECT');
-                          finalScore++;
-                        }
-                        else {
-                          debugPrint('WRONG');
-                        }
-                        updateQuestion();
-                      },
-                    ),
-                    SizedBox(width: 20,),
-                    MaterialButton(
-                      minWidth: 100,
-                      color: qColor,
-                      child: Text(quiz.choices[quesNumber][1]),
-                      onPressed: () {
-                        if(quiz.choices[quesNumber][1] == quiz.ans[quesNumber]){
-                          debugPrint('CORRECT');
-                          finalScore++;
-                        }
-                        else {
-                          debugPrint('WRONG');
-                        }
-                        updateQuestion();
-                      },
-                    )
-                  ],
-                ),
-              Wrap(
+              alignment: Alignment.topCenter,
+              child: Column(
                 children: [
-                    MaterialButton(
-                      minWidth: 100,
-                      color: qColor,
-                      child: Text(quiz.choices[quesNumber][2]),
-                      onPressed: () {
-                        if(quiz.choices[quesNumber][2] == quiz.ans[quesNumber]){
-                          debugPrint('CORRECT');
-                          finalScore++;
-                        }
-                        else {
-                          debugPrint('WRONG');
-                        }
-                        updateQuestion();
-                      },
+                  const Padding(
+                    padding: EdgeInsets.all(20),
+                  ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                            'Question ${quesNumber + 1} of ${quiz.questions.length}'),
+                        Text('Score $finalScore'),
+                      ],
                     ),
-                  SizedBox(width: 20,),
-                    MaterialButton(
-                      minWidth: 100,
-                      color: qColor,
-                      child: Text(quiz.choices[quesNumber][3]),
+                  ),
+                  const Padding(padding: EdgeInsets.all(10)),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "->->${quesNumber + 1} ${quiz.questions[quesNumber]}",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Wrap(
+                    children: [
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Text(quiz.choices[quesNumber][0]),
+                        onPressed: () {
+                          if (quiz.choices[quesNumber][0] ==
+                              quiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Text(quiz.choices[quesNumber][1]),
+                        onPressed: () {
+                          if (quiz.choices[quesNumber][1] ==
+                              quiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      )
+                    ],
+                  ),
+                  Wrap(
+                    children: [
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Text(quiz.choices[quesNumber][2]),
+                        onPressed: () {
+                          if (quiz.choices[quesNumber][2] ==
+                              quiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Text(quiz.choices[quesNumber][3]),
+                        onPressed: () {
+                          if (quiz.choices[quesNumber][3] ==
+                              quiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      )
+                    ],
+                  ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: MaterialButton(
                       onPressed: () {
-                        if(quiz.choices[quesNumber][3] == quiz.ans[quesNumber]){
-                          debugPrint('CORRECT');
-                          finalScore++;
-                        }
-                        else {
-                          debugPrint('WRONG');
-                        }
-                        updateQuestion();
+                        finalScore = 0;
+                        quesNumber = 0;
+                        Navigator.pop(context);
                       },
-                    )
-                  ],
-                ),
-              Container(
-                alignment: Alignment.bottomCenter,
-                child: MaterialButton(
-                  onPressed: () {
-                    finalScore = 0;
-                    quesNumber = 0;
-                    Navigator.pop(context);
-                  },
-                  child: const Text('RESET'),
-                ),
-              )
+                      child: const Text('RESET'),
+                    ),
+                  )
+                ],
+              ),
+            )));
+  }
 
-            ],
-          ),
-        )));
+  void updateQuestion() {
+    setState(() {
+      if (quesNumber == quiz.questions.length - 1) {
+        quesNumber = 0;
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SSummary(
+                      score: finalScore,
+                    )));
+      } else {
+        quesNumber++;
+      }
+    });
   }
 }
