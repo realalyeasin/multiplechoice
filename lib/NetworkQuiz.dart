@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multiple_choice/DBMS%20Quiz.dart';
 import 'package:multiple_choice/Quiz.dart';
 
 class NetworkQuiz extends StatefulWidget {
@@ -35,12 +36,76 @@ class _NetworkQuizState extends State<NetworkQuiz> {
           children: [
             MaterialButton(
               height: 50,
-              child: const Text('Quiz 1'),
+              child: const Text('Networking Quiz'),
               color: cColor,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> Quiz()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Quiz()));
               },
-            )
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              height: 50,
+              child: const Text('Database Management Quiz'),
+              color: Color.fromRGBO(204, 183, 238, 1),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const DBMS_Quiz()));
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              height: 50,
+              child: const Text('Networking Quiz'),
+              color: Color.fromRGBO(143, 58, 30, 1),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Quiz()));
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              height: 50,
+              child: const Text('Networking Quiz'),
+              color: cColor,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Quiz()));
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              height: 50,
+              child: const Text('Networking Quiz'),
+              color: cColor,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Quiz()));
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              height: 50,
+              child: const Text('Networking Quiz'),
+              color: cColor,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Quiz()));
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),

@@ -115,15 +115,15 @@ class _QuizState extends State<Quiz> {
                     ),
                   ),
                   const Padding(padding: EdgeInsets.all(10)),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
-                    "->->${quesNumber + 1} ${quiz.questions[quesNumber]}",
+                    "${quesNumber + 1} ${quiz.questions[quesNumber]}",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Wrap(
