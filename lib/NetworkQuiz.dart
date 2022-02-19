@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:multiple_choice/DBMS%20Quiz.dart';
 import 'package:multiple_choice/Quiz.dart';
 
+import 'ComputerSecurity.dart';
+
 class NetworkQuiz extends StatefulWidget {
   const NetworkQuiz({Key? key}) : super(key: key);
 
@@ -49,7 +51,7 @@ class _NetworkQuizState extends State<NetworkQuiz> {
             MaterialButton(
               height: 50,
               child: const Text('Database Management Quiz'),
-              color: Color.fromRGBO(204, 183, 238, 1),
+              color: const Color.fromRGBO(204, 183, 238, 1),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const DBMS_Quiz()));
@@ -61,10 +63,10 @@ class _NetworkQuizState extends State<NetworkQuiz> {
             MaterialButton(
               height: 50,
               child: const Text('Networking Quiz'),
-              color: Color.fromRGBO(143, 58, 30, 1),
+              color: const Color.fromRGBO(143, 158, 100, 1),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Quiz()));
+                    context, MaterialPageRoute(builder: (context) => const ComputerSecurity()));
               },
             ),
             const SizedBox(
