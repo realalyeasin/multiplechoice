@@ -29,6 +29,46 @@ class _NetworkQuizState extends State<NetworkQuiz> {
           'Multiple Choice Quiz',
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          PopupMenuButton(
+              color: Colors.cyan.shade100,
+              icon: Icon(Icons.stacked_line_chart_outlined, color: Colors.black,),
+              itemBuilder: (BuildContext ctx) => [
+                    PopupMenuItem(
+                      child: const Text('Add Your Question',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1,
+                      ),),
+                      value: 1,
+                      onTap: () {},
+                    ),
+                    const PopupMenuItem(
+                      child: Text('Contributors',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1,
+                        ),),
+                      value: 2,
+                    ),
+                    const PopupMenuItem(
+                      child: Text('New Items Added',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1,
+                        ),),
+                      value: 3,
+                    ),
+                    const PopupMenuItem(
+                      child: Text('Upcoming',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1,
+                        ),),
+                      value: 4,
+                    ),
+                  ])
+        ],
       ),
       body: Container(
         margin: const EdgeInsets.all(15),
@@ -66,7 +106,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
               color: const Color.fromRGBO(143, 158, 100, 1),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => const ComputerSecurity()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ComputerSecurity()));
               },
             ),
             const SizedBox(
