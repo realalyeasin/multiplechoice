@@ -50,7 +50,8 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                         ),
                       ),
                       value: 1,
-                      onTap: () {},
+                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadingMaterials(
+                      )));},
                     ),
                     const PopupMenuItem(
                       child: Text(
