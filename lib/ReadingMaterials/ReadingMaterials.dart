@@ -40,29 +40,39 @@ class _ReadingMaterialsState extends State<ReadingMaterials> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: Color.fromRGBO(247, 211, 36, 1),
-        title: Text('Reading Materials',
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, letterSpacing: 1),),
+        title: Text(
+          'Reading Materials',
+          style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1),
+        ),
       ),
-        backgroundColor: Color.fromRGBO(21, 76, 47, 1),
-        body: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (BuildContext Context,  index){
-                  return Padding(padding: EdgeInsets.all(30),
-                  child: Container(
-                    color: Color.fromRGBO(247, 211, 36, 1),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(materials[index], style: TextStyle(
-                            fontWeight: FontWeight.bold, letterSpacing: 1,fontSize: 16
-                          ),),
+      backgroundColor: Color.fromRGBO(21, 76, 47, 1),
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext Context, index) {
+            return Padding(
+                padding: EdgeInsets.all(30),
+                child: Container(
+                  color: Color.fromRGBO(247, 211, 36, 1),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          materials[index],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                              fontSize: 16),
                         ),
+                      ),
                       TextWrapper(text: articles[index])
-                      ],
-                    ),
-                  ));
-                }),
-        );
+                    ],
+                  ),
+                ));
+          }),
+    );
   }
 }
