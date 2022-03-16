@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'Summary.dart';
 
 class DBMSQuizDB {
+  var name = 'Database Management System';
   var questions = [
     "In designing a parallel program, one has to break the problem into discreet chunks of work that can be distributed to multiple tasks. This is known as",
     "Fine-grain Parallelism is",
@@ -116,17 +117,26 @@ class DBMS_Quiz extends StatefulWidget {
 }
 
 class _DBMS_QuizState extends State<DBMS_Quiz> {
-  final qColor = const Color.fromRGBO(189, 238, 183, 1);
-  final aColor = const Color.fromRGBO(238, 183, 211, 1);
+  final qColor = const Color.fromRGBO(0, 0, 0, 1);
+  final aColor = const Color.fromRGBO(61, 10, 60, 1);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                DBMSquiz.name,
+                style: const TextStyle(letterSpacing: 1),
+              ),
+              backgroundColor: const Color.fromRGBO(5, 0, 8, 1),
+              automaticallyImplyLeading: false,
+              centerTitle: true,
+            ),
             backgroundColor: aColor,
             body: Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
@@ -139,8 +149,19 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            'Question ${quesNumber + 1} of ${DBMSquiz.questions.length}'),
-                        Text('Score $finalScore'),
+                          'Question ${quesNumber + 1} of ${DBMSquiz.questions.length}',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              letterSpacing: .5,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text('Score $finalScore',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -151,84 +172,123 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                   Text(
                     "${quesNumber + 1} ${DBMSquiz.questions[quesNumber]}",
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                        color: Colors.white,
+                        fontSize: 17,
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 15,
                   ),
-                  Wrap(
-                    children: [
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Text(DBMSquiz.choices[quesNumber][0]),
-                        onPressed: () {
-                          if (DBMSquiz.choices[quesNumber][0] ==
-                              DBMSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Text(DBMSquiz.choices[quesNumber][1]),
-                        onPressed: () {
-                          if (DBMSquiz.choices[quesNumber][1] ==
-                              DBMSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
-                      )
-                    ],
+                  Center(
+                    child: Column(
+                      children: [
+                        MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(DBMSquiz.choices[quesNumber][0],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (DBMSquiz.choices[quesNumber][0] ==
+                                DBMSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                            } else {
+                              debugPrint('WRONG');
+                            }
+                            updateQuestion();
+                          },
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(DBMSquiz.choices[quesNumber][1],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (DBMSquiz.choices[quesNumber][1] ==
+                                DBMSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                            } else {
+                              debugPrint('WRONG');
+                            }
+                            updateQuestion();
+                          },
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(DBMSquiz.choices[quesNumber][2],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (DBMSquiz.choices[quesNumber][2] ==
+                                DBMSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                            } else {
+                              debugPrint('WRONG');
+                            }
+                            updateQuestion();
+                          },
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(DBMSquiz.choices[quesNumber][3],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (DBMSquiz.choices[quesNumber][3] ==
+                                DBMSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                            } else {
+                              debugPrint('WRONG');
+                            }
+                            updateQuestion();
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                  Wrap(
-                    children: [
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Text(DBMSquiz.choices[quesNumber][2]),
-                        onPressed: () {
-                          if (DBMSquiz.choices[quesNumber][2] ==
-                              DBMSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Text(DBMSquiz.choices[quesNumber][3]),
-                        onPressed: () {
-                          if (DBMSquiz.choices[quesNumber][3] ==
-                              DBMSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
-                      )
-                    ],
+                  const SizedBox(
+                    height: 220,
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,
@@ -238,7 +298,12 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                         quesNumber = 0;
                         Navigator.pop(context);
                       },
-                      child: const Text('RESET'),
+                      child: const Text('RESET',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              letterSpacing: 2.5,
+                              fontWeight: FontWeight.bold)),
                     ),
                   )
                 ],

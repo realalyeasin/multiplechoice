@@ -9,7 +9,7 @@ class SSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: qColor,
+        backgroundColor: const Color.fromRGBO(2, 26, 72, 1),
         body: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Center(
@@ -18,11 +18,11 @@ class SSummary extends StatelessWidget {
                 height: 100,
                 width: 300,
                 color: Colors.black,
-                margin: EdgeInsets.all(50),
+                margin: const EdgeInsets.all(50),
                 alignment: Alignment.center,
                 child: Text(
                   "Final Score ${score.toString()}",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),

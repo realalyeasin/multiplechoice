@@ -3,6 +3,7 @@ import 'package:multiple_choice/NetworkQuiz.dart';
 import 'package:multiple_choice/PopUpClasses/Contributors.dart';
 
 import 'PopUpClasses/AddQuestion.dart';
+import 'PopUpClasses/upComing.dart';
 import 'Quiz.dart';
 
 void main() {
@@ -52,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                     if (menu == 1) {navigatorKey.currentState?.push(MaterialPageRoute(builder: (context)=> AddQuestion()));}
                     else if (menu == 2) {navigatorKey.currentState?.push(MaterialPageRoute(builder: (context)=> const Contributors()));}
                     else if (menu == 3) {navigatorKey.currentState?.push(MaterialPageRoute(builder: (context)=> AddQuestion()));}
-                    else if (menu == 4) {navigatorKey.currentState?.push(MaterialPageRoute(builder: (context)=> AddQuestion()));}
+                    else if (menu == 4) {navigatorKey.currentState?.push(MaterialPageRoute(builder: (context)=> upComing()));}
                   },
                   itemBuilder: (BuildContext ctx) => [
                     const PopupMenuItem(
