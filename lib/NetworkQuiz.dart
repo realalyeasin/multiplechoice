@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multiple_choice/DBMS%20Quiz.dart';
 import 'package:multiple_choice/Quiz.dart';
 import 'ComputerSecurity.dart';
@@ -244,10 +245,10 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                       },
                     ),
                   )),
-                    Positioned(
+                    const Positioned(
                         top: 27,
-                        left: 230,
-                        child: Icon(Icons.library_books, color: Colors.yellow,))
+                        left: 225,
+                        child: Icon(FontAwesomeIcons.book, color: Colors.yellow,))
 
           ]
                 )
