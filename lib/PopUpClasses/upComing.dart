@@ -40,8 +40,8 @@ class _upComingState extends State<upComing> with TickerProviderStateMixin {
                       child: RotationTransition(
                           turns: _controller,
                           child: const Icon(
-                            FontAwesomeIcons.voteYea,
-                            color: Colors.white,
+                            FontAwesomeIcons.hammer,
+                            color: Color.fromRGBO(251, 199, 158, 1)
                           )))),
             ),
             Center(
@@ -58,7 +58,7 @@ class _upComingState extends State<upComing> with TickerProviderStateMixin {
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('Quizes', style: TextStyle(color: Colors.white, letterSpacing: 2, fontWeight: FontWeight.w600, fontSize: 16),),
+                    child: Text('More Important Quizzes', style: TextStyle(color: Colors.white, letterSpacing: 2, fontWeight: FontWeight.w600, fontSize: 16),),
                   )
                 ],
               ),

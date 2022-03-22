@@ -298,7 +298,7 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                         quesNumber = 0;
                         Navigator.pop(context);
                       },
-                      child: const Text('RESET',
+                      child: const Text('QUIT',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,

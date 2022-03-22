@@ -36,13 +36,14 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                   children: [
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         child: const Text(
-                          'Networking Quiz',
+                          'Networking',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1,
+                              fontSize: 17,
                               color: Colors.yellow),
                         ),
                         color: Colors.black,
@@ -53,18 +54,22 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                                   builder: (context) => const Quiz()));
                         },
                       ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 5)
+                      ),
                     ),
                     Container(
                       height: 80,
-                      width: 125,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         elevation: 2,
                         child: const Text(
-                          'Database Management Quiz',
+                          'Database Management',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1,
+                              fontSize: 16,
                               color: Colors.yellow),
                         ),
                         color: Colors.black,
@@ -74,6 +79,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                               MaterialPageRoute(
                                   builder: (context) => const DBMS_Quiz()));
                         },
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
                       ),
                     ),
                   ],
@@ -86,14 +94,15 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                   children: [
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
-                          'Computer Security Quiz',
+                          'Computer Security',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1,
+                              fontSize: 16,
                               color: Colors.yellow),
                         ),
                         color: Colors.black,
@@ -105,17 +114,21 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                                       const ComputerSecurity()));
                         },
                       ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
+                      ),
                     ),
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
-                          'Networking Quiz',
+                          'Operating System',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1,
+                              fontSize: 16,
                               color: Colors.yellow),
                         ),
                         color: Colors.black,
@@ -123,6 +136,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Quiz()));
                         },
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
                       ),
                     ),
                   ],
@@ -135,7 +151,7 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                   children: [
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
@@ -151,10 +167,13 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                               MaterialPageRoute(builder: (context) => Quiz()));
                         },
                       ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
+                      ),
                     ),
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
@@ -169,6 +188,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Quiz()));
                         },
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
                       ),
                     ),
                   ],
@@ -181,7 +203,7 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                   children: [
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
@@ -197,10 +219,13 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                               MaterialPageRoute(builder: (context) => Quiz()));
                         },
                       ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
+                      ),
                     ),
                     Container(
                       height: 80,
-                      width: 120,
+                      width: 147,
                       child: MaterialButton(
                         height: 50,
                         child: const Text(
@@ -215,6 +240,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Quiz()));
                         },
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 5)
                       ),
                     ),
                   ],
@@ -244,6 +272,9 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                             MaterialPageRoute(builder: (context) => ReadingMaterials()));
                       },
                     ),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 5)
+                        ),
                   )),
                     const Positioned(
                         top: 27,

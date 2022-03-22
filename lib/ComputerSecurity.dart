@@ -287,7 +287,7 @@ class _ComputerSecurityState extends State<ComputerSecurity> {
                       quesNumber = 0;
                       Navigator.pop(context);
                     },
-                    child: const Text('RESET',
+                    child: const Text('QUIT',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
