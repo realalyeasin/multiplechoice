@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multiple_choice/DBMS%20Quiz.dart';
 import 'package:multiple_choice/Quiz.dart';
 import 'ComputerSecurity.dart';
+import 'OperatingSystem.dart';
 import 'ReadingMaterials/ReadingMaterials.dart';
 class NetworkQuiz extends StatefulWidget {
   const NetworkQuiz({Key? key}) : super(key: key);
@@ -134,7 +135,7 @@ class _NetworkQuizState extends State<NetworkQuiz> {
                         color: Colors.black,
                         onPressed: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Quiz()));
+                              MaterialPageRoute(builder: (context) => const OperatingSystem()));
                         },
                       ),
                       decoration: BoxDecoration(

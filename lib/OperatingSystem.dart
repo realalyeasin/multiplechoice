@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'Summary.dart';
 
 class OSDB {
   var name = 'Operating System';
@@ -84,6 +87,7 @@ class OSDB {
 
 var finalScore = 0;
 var quesNumber = 0;
+var OSquiz = OSDB();
 
 class OperatingSystem extends StatefulWidget {
   const OperatingSystem({Key? key}) : super(key: key);
@@ -93,11 +97,213 @@ class OperatingSystem extends StatefulWidget {
 }
 
 class _OperatingSystemState extends State<OperatingSystem> {
+  final qColor = const Color.fromRGBO(0, 0, 0, 1);
+  final aColor = const Color.fromRGBO(61, 10, 60, 1);
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: Container(),
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              OSquiz.name,
+              style: const TextStyle(letterSpacing: 1),
+            ),
+            backgroundColor: const Color.fromRGBO(5, 0, 8, 1),
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+          ),
+          backgroundColor: aColor,
+          body: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            alignment: Alignment.topCenter,
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                ),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Question ${quesNumber + 1} of ${OSquiz.questions.length}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            letterSpacing: .5,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text('Score $finalScore',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              letterSpacing: .5,
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.all(10)),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "${quesNumber + 1} ${OSquiz.questions[quesNumber]}",
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(OSquiz.choices[quesNumber][0],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  letterSpacing: .5,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onPressed: () {
+                          if (OSquiz.choices[quesNumber][0] ==
+                              OSquiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(OSquiz.choices[quesNumber][1],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  letterSpacing: .5,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onPressed: () {
+                          if (OSquiz.choices[quesNumber][1] ==
+                              OSquiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(OSquiz.choices[quesNumber][2],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  letterSpacing: .5,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onPressed: () {
+                          if (OSquiz.choices[quesNumber][2] ==
+                              OSquiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      MaterialButton(
+                        minWidth: 100,
+                        color: qColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(OSquiz.choices[quesNumber][3],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  letterSpacing: .5,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onPressed: () {
+                          if (OSquiz.choices[quesNumber][3] ==
+                              OSquiz.ans[quesNumber]) {
+                            debugPrint('CORRECT');
+                            finalScore++;
+                          } else {
+                            debugPrint('WRONG');
+                          }
+                          updateQuestion();
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 150,
+                ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    onPressed: () {
+                      finalScore = 0;
+                      quesNumber = 0;
+                      Navigator.pop(context);
+                    },
+                    child: const Text('QUIT',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            letterSpacing: 2.5,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                )
+              ],
+            ),
+          )
+      ),
     );
+  }
+  void updateQuestion() {
+    setState(() {
+      if (quesNumber == OSquiz.questions.length - 1) {
+        quesNumber = 0;
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SSummary(
+                  score: finalScore,
+                )));
+      } else {
+        quesNumber++;
+      }
+    });
   }
 }
