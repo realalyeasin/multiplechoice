@@ -36,7 +36,7 @@ class DBMSQuizDB {
     [
       "A computer architecture where all processors have direct access to common physical memory",
       "It refers to network based memory access for physical memory that is not common",
-      "Parallel tasks typically need to exchange data There are several ways this can be accomplished, such as through, a shared memory bus or over a network, however the actual event of data exchange is commonly referred to as communications regardless of the method employed",
+      "Parallel tasks typically need to exchange data There are several ways this can be accomplished, such as through, a shared memory bus or over a network",
       "None of these"
     ],
     [
@@ -105,8 +105,11 @@ class DBMSQuizDB {
   ];
 }
 
+var colorInitial = Colors.black;
 var finalScore = 0;
 var quesNumber = 0;
+var next = true;
+var border = Border.all(color: colorInitial, width: 4);
 var DBMSquiz = DBMSQuizDB();
 
 class DBMS_Quiz extends StatefulWidget {
@@ -123,68 +126,72 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                DBMSquiz.name,
-                style: const TextStyle(letterSpacing: 1),
-              ),
-              backgroundColor: const Color.fromRGBO(5, 0, 8, 1),
-              automaticallyImplyLeading: false,
-              centerTitle: true,
+      onWillPop: () async => false,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              DBMSquiz.name,
+              style: const TextStyle(letterSpacing: 1),
             ),
-            backgroundColor: aColor,
-            body: Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              alignment: Alignment.topCenter,
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(20),
-                  ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Question ${quesNumber + 1} of ${DBMSquiz.questions.length}',
+            backgroundColor: const Color.fromRGBO(5, 0, 8, 1),
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+          ),
+          backgroundColor: aColor,
+          body: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            alignment: Alignment.topCenter,
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                ),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Question ${quesNumber + 1} of ${DBMSquiz.questions.length}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            letterSpacing: .5,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text('Score $finalScore',
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 17,
                               letterSpacing: .5,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.all(10)),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "${quesNumber + 1} ${DBMSquiz.questions[quesNumber]}",
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        Text('Score $finalScore',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                letterSpacing: .5,
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                  const Padding(padding: EdgeInsets.all(10)),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    "${quesNumber + 1} ${DBMSquiz.questions[quesNumber]}",
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        letterSpacing: 1,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Center(
-                    child: Column(
-                      children: [
-                        MaterialButton(
-                          minWidth: 100,
+                        child: MaterialButton(
                           color: qColor,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -200,16 +207,51 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                                 DBMSquiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
-                              debugPrint('WRONG');
+                              setState(() {
+                                debugPrint('WRONG');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor:
+                                  Colors.orangeAccent.withOpacity(.7),
+                                  duration: Duration(milliseconds: 1000),
+                                  content: const Text(
+                                    "Wrong Answer",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ));
+                              });
+                              updateQuestion();
                             }
-                            updateQuestion();
                           },
                         ),
-                        const SizedBox(
-                          height: 5,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        MaterialButton(
+                        child: MaterialButton(
                           minWidth: 100,
                           color: qColor,
                           child: Padding(
@@ -226,16 +268,49 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                                 DBMSquiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             }
-                            updateQuestion();
                           },
                         ),
-                        const SizedBox(
-                          height: 10,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        MaterialButton(
+                        child: MaterialButton(
                           minWidth: 100,
                           color: qColor,
                           child: Padding(
@@ -250,18 +325,51 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                           onPressed: () {
                             if (DBMSquiz.choices[quesNumber][2] ==
                                 DBMSquiz.ans[quesNumber]) {
-                              debugPrint('CORRECT');
+                              debugPrint('Correct Answer');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             }
-                            updateQuestion();
                           },
                         ),
-                        const SizedBox(
-                          height: 5,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        MaterialButton(
+                        child: MaterialButton(
                           minWidth: 100,
                           color: qColor,
                           child: Padding(
@@ -278,37 +386,100 @@ class _DBMS_QuizState extends State<DBMS_Quiz> {
                                 DBMSquiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             }
-                            updateQuestion();
                           },
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MaterialButton(
+                            color: Colors.black,
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              if (next) {
+                                updateQuestion();
+                              }
+                            },
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 220,
-                  ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: MaterialButton(
-                      onPressed: () {
-                        finalScore = 0;
-                        quesNumber = 0;
-                        Navigator.pop(context);
-                      },
-                      child: const Text('QUIT',
+                ),
+                Divider(
+                  color: Colors.white,
+                  thickness: 2,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    onPressed: () {
+                      finalScore = 0;
+                      quesNumber = 0;
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(28.0),
+                      child: Text('QUIT',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 17,
+                              backgroundColor: Colors.white,
                               letterSpacing: 2.5,
                               fontWeight: FontWeight.bold)),
                     ),
-                  )
-                ],
-              ),
-            )));
+                  ),
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 2,
+                ),
+              ],
+            ),
+          )),
+    );
   }
 
   void updateQuestion() {

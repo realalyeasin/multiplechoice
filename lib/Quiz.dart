@@ -170,10 +170,37 @@ class _QuizState extends State<Quiz> {
                                 quiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
                             }
-                            updateQuestion();
+
                           },
                         ),
                         const SizedBox(
@@ -196,10 +223,37 @@ class _QuizState extends State<Quiz> {
                                 quiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
                             }
-                            updateQuestion();
+
                           },
                         ),
                         const SizedBox(
@@ -222,10 +276,37 @@ class _QuizState extends State<Quiz> {
                                 quiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
                             }
-                            updateQuestion();
+
                           },
                         ),
                         const SizedBox(
@@ -248,10 +329,37 @@ class _QuizState extends State<Quiz> {
                                 quiz.ans[quesNumber]) {
                               debugPrint('CORRECT');
                               finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
                             } else {
                               debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
                             }
-                            updateQuestion();
+
                           },
                         )
                       ],

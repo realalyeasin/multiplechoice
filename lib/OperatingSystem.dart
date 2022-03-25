@@ -37,21 +37,66 @@ class OSDB {
     ["1948", "1949", "1950", "1951"],
     ["1994", "1992", "1998", "1985"],
     ["prompt", "kernel", "shell", "command"],
-    ["File attribute table", "File allocation table", "Font attribute table", "Format allocation table"],
-    ["By operating system", "By compiler", "By interpreter", "By application software"],
+    [
+      "File attribute table",
+      "File allocation table",
+      "Font attribute table",
+      "Format allocation table"
+    ],
+    [
+      "By operating system",
+      "By compiler",
+      "By interpreter",
+      "By application software"
+    ],
     ["Restarting computer", "Install the program", "To scan", "To turn off"],
-    ["The page is present in memory.", "The deadlock occurs.", "The page does not present in memory.", "The buffering occurs."],
-    ["To prevent deadlock", "To deadlock recovery", "To solve the deadlock", "None of these"],
+    [
+      "The page is present in memory.",
+      "The deadlock occurs.",
+      "The page does not present in memory.",
+      "The buffering occurs."
+    ],
+    [
+      "To prevent deadlock",
+      "To deadlock recovery",
+      "To solve the deadlock",
+      "None of these"
+    ],
     ["Taskbar", "Recycle bin", "Hard disk", "None of these"],
-    ["Private operating system", "Windows operating system", "Open-source operating system", "None of these"],
-    ["Direct system module", "Direct system memory", "Demoralized system memory", "Distributed shared memory"],
-    ["Interface definition language", "Interface direct language", "Interface data library", "None of these"],
+    [
+      "Private operating system",
+      "Windows operating system",
+      "Open-source operating system",
+      "None of these"
+    ],
+    [
+      "Direct system module",
+      "Direct system memory",
+      "Demoralized system memory",
+      "Distributed shared memory"
+    ],
+    [
+      "Interface definition language",
+      "Interface direct language",
+      "Interface data library",
+      "None of these"
+    ],
     ["Cold boot", "Cold hot boot", "Cold hot strap", "Hot boot"],
-    ["To disk protection", "To CPU protection", "To memory protection", "None of these"],
+    [
+      "To disk protection",
+      "To CPU protection",
+      "To memory protection",
+      "None of these"
+    ],
     ["Decreases", "Increases", "Remains constant", "None of these"],
     ["Windows", "MAC", "Ms-Dos", "None"],
     ["CPU", "RAM", "Address bus", "Data bus"],
-    ["Translation Lookaside Buffer miss", "Buffer miss", "Translation Lookaside Buffer hit", "All of the mentioned"],
+    [
+      "Translation Lookaside Buffer miss",
+      "Buffer miss",
+      "Translation Lookaside Buffer hit",
+      "All of the mentioned"
+    ],
     ["Linux", "Windows", "MAC", "DOS"],
     ["Mutual exclusion", "Circular wait", "No preemption", "All of these"],
     ["API", "System call", "Library", "Assembly instruction"],
@@ -84,10 +129,12 @@ class OSDB {
     "Authentication"
   ];
 }
-
+var OSquiz = OSDB();
+var colorInitial = Colors.black;
 var finalScore = 0;
 var quesNumber = 0;
-var OSquiz = OSDB();
+var next = true;
+var border = Border.all(color: colorInitial, width: 4);
 
 class OperatingSystem extends StatefulWidget {
   const OperatingSystem({Key? key}) : super(key: key);
@@ -162,112 +209,267 @@ class _OperatingSystemState extends State<OperatingSystem> {
                 Center(
                   child: Column(
                     children: [
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(OSquiz.choices[quesNumber][0],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (OSquiz.choices[quesNumber][0] ==
-                              OSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(OSquiz.choices[quesNumber][0],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (OSquiz.choices[quesNumber][0] ==
+                                OSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              setState(() {
+                                debugPrint('Wrong Answer');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor:
+                                      Colors.orangeAccent.withOpacity(.7),
+                                  duration: Duration(milliseconds: 1000),
+                                  content: const Text(
+                                    "Wrong Answer",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ));
+                              });
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(OSquiz.choices[quesNumber][1],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (OSquiz.choices[quesNumber][1] ==
-                              OSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(OSquiz.choices[quesNumber][1],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (OSquiz.choices[quesNumber][1] ==
+                                OSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('Wrong Answer');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Sorry! Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(OSquiz.choices[quesNumber][2],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (OSquiz.choices[quesNumber][2] ==
-                              OSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(OSquiz.choices[quesNumber][2],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (OSquiz.choices[quesNumber][2] ==
+                                OSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('Wrong Answer');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(OSquiz.choices[quesNumber][3],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (OSquiz.choices[quesNumber][3] ==
-                              OSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(OSquiz.choices[quesNumber][3],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (OSquiz.choices[quesNumber][3] ==
+                                OSquiz.ans[quesNumber]) {
+                              debugPrint('Correct Answer');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('Wrong Answer');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MaterialButton(
+                            color: Colors.black,
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              if (next) {
+                                updateQuestion();
+                              }
+                            },
+                          )
+                        ],
                       )
                     ],
                   ),
                 ),
+                Divider(
+                  color: Colors.white,
+                  thickness: 2,
+                ),
                 const SizedBox(
-                  height: 150,
+                  height: 70,
                 ),
                 Container(
                   alignment: Alignment.bottomCenter,
@@ -277,20 +479,28 @@ class _OperatingSystemState extends State<OperatingSystem> {
                       quesNumber = 0;
                       Navigator.pop(context);
                     },
-                    child: const Text('QUIT',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            letterSpacing: 2.5,
-                            fontWeight: FontWeight.bold)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(28.0),
+                      child: Text('QUIT',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                              backgroundColor: Colors.white,
+                              letterSpacing: 2.5,
+                              fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                )
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 2,
+                ),
               ],
             ),
-          )
-      ),
+          )),
     );
   }
+
   void updateQuestion() {
     setState(() {
       if (quesNumber == OSquiz.questions.length - 1) {
@@ -299,8 +509,8 @@ class _OperatingSystemState extends State<OperatingSystem> {
             context,
             MaterialPageRoute(
                 builder: (context) => SSummary(
-                  score: finalScore,
-                )));
+                      score: finalScore,
+                    )));
       } else {
         quesNumber++;
       }

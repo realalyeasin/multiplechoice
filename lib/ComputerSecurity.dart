@@ -94,8 +94,11 @@ class ComSecDB {
     "Virus",
   ];
 }
+var colorInitial = Colors.black;
 var finalScore = 0;
 var quesNumber = 0;
+var next = true;
+var border = Border.all(color: colorInitial, width: 4);
 var CSquiz = ComSecDB();
 
 
@@ -172,112 +175,267 @@ class _ComputerSecurityState extends State<ComputerSecurity> {
                 Center(
                   child: Column(
                     children: [
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(CSquiz.choices[quesNumber][0],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (CSquiz.choices[quesNumber][0] ==
-                              CSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(CSquiz.choices[quesNumber][0],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (CSquiz.choices[quesNumber][0] ==
+                                CSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              setState(() {
+                                debugPrint('WRONG');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor:
+                                  Colors.orangeAccent.withOpacity(.7),
+                                  duration: Duration(milliseconds: 1000),
+                                  content: const Text(
+                                    "Wrong Answer",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ));
+                              });
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(CSquiz.choices[quesNumber][1],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (CSquiz.choices[quesNumber][1] ==
-                              CSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(CSquiz.choices[quesNumber][1],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (CSquiz.choices[quesNumber][1] ==
+                                CSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(CSquiz.choices[quesNumber][2],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (CSquiz.choices[quesNumber][2] ==
-                              CSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(CSquiz.choices[quesNumber][2],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (CSquiz.choices[quesNumber][2] ==
+                                CSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('WRONG');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      MaterialButton(
-                        minWidth: 100,
-                        color: qColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(CSquiz.choices[quesNumber][3],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  letterSpacing: .5,
-                                  fontWeight: FontWeight.bold)),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: border,
+                          color: colorInitial,
                         ),
-                        onPressed: () {
-                          if (CSquiz.choices[quesNumber][3] ==
-                              CSquiz.ans[quesNumber]) {
-                            debugPrint('CORRECT');
-                            finalScore++;
-                          } else {
-                            debugPrint('WRONG');
-                          }
-                          updateQuestion();
-                        },
+                        child: MaterialButton(
+                          minWidth: 100,
+                          color: qColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(CSquiz.choices[quesNumber][3],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          onPressed: () {
+                            if (CSquiz.choices[quesNumber][3] ==
+                                CSquiz.ans[quesNumber]) {
+                              debugPrint('CORRECT');
+                              finalScore++;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Correct Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                              updateQuestion();
+                            } else {
+                              debugPrint('Wrong Answer');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                Colors.orangeAccent.withOpacity(.7),
+                                duration: Duration(milliseconds: 1000),
+                                content: const Text(
+                                  "Wrong Answer",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ));
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MaterialButton(
+                            color: Colors.black,
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              if (next) {
+                                updateQuestion();
+                              }
+                            },
+                          )
+                        ],
                       )
                     ],
                   ),
                 ),
+                Divider(
+                  color: Colors.white,
+                  thickness: 2,
+                ),
                 const SizedBox(
-                  height: 150,
+                  height: 70,
                 ),
                 Container(
                   alignment: Alignment.bottomCenter,
@@ -287,18 +445,25 @@ class _ComputerSecurityState extends State<ComputerSecurity> {
                       quesNumber = 0;
                       Navigator.pop(context);
                     },
-                    child: const Text('QUIT',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            letterSpacing: 2.5,
-                            fontWeight: FontWeight.bold)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(28.0),
+                      child: Text('QUIT',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                              backgroundColor: Colors.white,
+                              letterSpacing: 2.5,
+                              fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                )
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 2,
+                ),
               ],
             ),
-          )
-      ),
+          )),
     );
   }
   void updateQuestion() {
