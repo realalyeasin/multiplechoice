@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddQuestion extends StatefulWidget {
@@ -9,14 +10,14 @@ class AddQuestion extends StatefulWidget {
 
 class _AddQuestionState extends State<AddQuestion>
     with SingleTickerProviderStateMixin {
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _pass = TextEditingController();
-
-  String _userEmail = '';
-  String _password = '';
+  CollectionReference mcqUsers =
+      FirebaseFirestore.instance.collection("mcqUsers");
+  String? name, email, ques;
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference mcqUsers =
+        FirebaseFirestore.instance.collection('mcqUsers');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(3, 14, 72, 1),
@@ -40,8 +41,9 @@ class _AddQuestionState extends State<AddQuestion>
                   padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
                   child: TextFormField(
                     cursorColor: Colors.black,
-                    onChanged: (text) {},
-                    controller: _email,
+                    onChanged: (value1) {
+                      name = value1;
+                    },
                     decoration: const InputDecoration(
                       suffixIcon: Icon(
                         Icons.perm_contact_calendar_outlined,
@@ -53,21 +55,39 @@ class _AddQuestionState extends State<AddQuestion>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
+                  padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
                   child: TextFormField(
                     cursorColor: Colors.black,
-                    onChanged: (text) {},
+                    onChanged: (value2) {
+                      email = value2;
+                    },
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),
+                      border: UnderlineInputBorder(),
+                      hintText: 'Enter Your Mail',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                  child: TextFormField(
+                    cursorColor: Colors.black,
+                    onChanged: (value3) {
+                      ques = value3;
+                    },
                     autocorrect: false,
                     obscureText: false,
                     enableSuggestions: false,
-                    controller: _pass,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(
                         Icons.question_answer_outlined,
                         color: Colors.black,
                       ),
                       border: UnderlineInputBorder(),
-                      hintText: 'Password',
+                      hintText: 'Write your questions',
                     ),
                   ),
                 ),
@@ -81,7 +101,27 @@ class _AddQuestionState extends State<AddQuestion>
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 primary: const Color.fromRGBO(3, 14, 72, 1)),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await mcqUsers.add({
+                                "name": name,
+                                "email": email,
+                                "question": ques
+                              }).then((value) => debugPrint("New Value Added"));
+                              setState(() {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  backgroundColor: Colors.black.withOpacity(.9),
+                                  duration: Duration(milliseconds: 2200),
+                                  content: const Text(
+                                    "Thanks for your query!",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        letterSpacing: 2,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ));
+                              });
+                            },
                             child: const Text(
                               'Submit',
                               style: TextStyle(

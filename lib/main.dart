@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:multiple_choice/NetworkQuiz.dart';
 import 'package:multiple_choice/PopUpClasses/Contributors.dart';
@@ -6,7 +7,9 @@ import 'PopUpClasses/AddQuestion.dart';
 import 'PopUpClasses/upComing.dart';
 import 'Quiz.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
