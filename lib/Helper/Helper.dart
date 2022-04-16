@@ -33,6 +33,7 @@ class AuthService {
           context: context,
           builder: (context) {
             return AlertDialog(
+              backgroundColor: Colors.red,
               title: Text("Error Message"),
               content: Text(e.toString()),
             );
@@ -64,6 +65,7 @@ class AuthService {
           context: context,
           builder: (context) {
             return AlertDialog(
+              backgroundColor: Colors.red,
               title: Text("Error Message"),
               content: Text(e.toString()),
             );

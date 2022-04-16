@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  fancy_drawer:
+    dependency: "direct main"
+    description:
+      name: fancy_drawer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   firebase_auth:
     dependency: "direct main"
     description:
