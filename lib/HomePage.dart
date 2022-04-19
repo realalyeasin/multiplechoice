@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _controller = FancyDrawerController(
-        vsync: this, duration: Duration(milliseconds: 250))
+        vsync: this, duration: const Duration(milliseconds: 250))
       ..addListener(() {
         setState(() {});
       });
@@ -41,52 +41,78 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return FancyDrawerWrapper(
-      drawerItems: [
+      backgroundColor: Colors.black,
+      itemGap: 20,
+      cornerRadius: 10,
+      drawerPadding: EdgeInsets.all(50),
+      hideOnContentTap: true,
+      drawerItems: const [
         Text(
           "Go to home",
           style: TextStyle(
-            fontSize: 18,
-            color: Colors.purple.shade700,
-            fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+              fontSize: 20,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 4
           ),
         ),
         Text(
           "About us",
           style: TextStyle(
-            fontSize: 18,
-            color: Colors.purple.shade700,
-            fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+              fontSize: 19,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 4
           ),
         ),
         Text(
           "Our products",
           style: TextStyle(
-            fontSize: 18,
-            color: Colors.purple.shade700,
-            fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+              fontSize: 17,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 4
           ),
         ),
         Text(
           "Support us",
           style: TextStyle(
-            fontSize: 18,
-            color: Colors.purple.shade700,
-            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.none,
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 4
           ),
         ),
         Text(
           "Log out",
           style: TextStyle(
-            fontSize: 18,
-            color: Colors.purple.shade700,
-            fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+              fontSize: 15,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 3
           ),
         ),
       ],
       controller: _controller,
       child: Scaffold(
-        body: NetworkQuiz(),
+        body: const Center(
+          child: NetworkQuiz(),
+        ),
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              _controller.toggle();
+            },
+          ),
           centerTitle: true,
           backgroundColor: const Color.fromRGBO(247, 211, 36, 1),
           title: const Text(
